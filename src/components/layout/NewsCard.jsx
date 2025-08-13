@@ -7,6 +7,7 @@ function NewsCard() {
   const { NewsList } = NewsStore();
 
 
+
   if (!NewsList) {
     return <NewsSkeleton />;
   }

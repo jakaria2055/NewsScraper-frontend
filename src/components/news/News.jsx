@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import TopNewsCard from "../layout/TopNewsCard";
 
 function News() {
-  const { NewsList, NewsListRequest } = NewsStore();
+  const { NewsListRequest } = NewsStore();
 
   useEffect(() => {
     (async () => {
