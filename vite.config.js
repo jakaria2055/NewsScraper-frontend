@@ -8,8 +8,9 @@ export default defineConfig({
     server: {
     proxy: {
       '/api/': {
-        target: "http://localhost:8080",
-        changeOrigin: true,
+        target: "https://news-scraper-news-portal.vercel.app",
+        changeOrigin:true,
+        secure:true,
       },
     },
   },

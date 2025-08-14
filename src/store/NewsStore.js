@@ -1,7 +1,7 @@
 import axios from "axios";
 import { create } from "zustand";
 import { unauthorized } from "../utility/utility";
-import API_BASE_URL from "../config";
+
 
 const NewsStore = create((set) => ({
   NewsForm: {
@@ -22,7 +22,7 @@ const NewsStore = create((set) => ({
 
   NewsList: null,
   NewsListRequest: async () => {
-    let res = await axios.get(`${API_BASE_URL}/ReadNews`);
+    let res = await axios.get(`/api/v1/ReadNews`);
     if (res.data["status"] === "success") {
       set({ NewsList: res.data["data"] });
     }
@@ -31,7 +31,7 @@ const NewsStore = create((set) => ({
   NewsCreateRequest: async (PostBody) => {
     try {
       set({ NewsList: null });
-      let res = await axios.post(`${API_BASE_URL}/CreateNews`, PostBody);
+      let res = await axios.post(`/api/v1/CreateNews`, PostBody);
       return res.data["status"] === "success";
     } catch (e) {
       unauthorized(e.response.status);
@@ -41,7 +41,7 @@ const NewsStore = create((set) => ({
   NewsUpdateRequest: async (newsId, PostBody) => {
     try {
       set({ NewsList: null });
-      let res = await axios.put(`${API_BASE_URL}/EditNews/${newsId}`, PostBody);
+      let res = await axios.put(`/api/v1/EditNews/${newsId}`, PostBody);
       return res.data["status"] === "success";
     } catch (e) {
       unauthorized(e.response.status);
@@ -53,7 +53,7 @@ const NewsStore = create((set) => ({
       set((state) => ({
         NewsList: state.NewsList?.filter((item) => item.newsId !== newsId),
       }));
-      await axios.delete(`${API_BASE_URL}/DeleteNews/${newsId}`);
+      await axios.delete(`/api/v1/DeleteNews/${newsId}`);
     } catch (e) {
       unauthorized(e.response.status);
     }
