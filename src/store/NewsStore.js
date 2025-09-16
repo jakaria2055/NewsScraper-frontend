@@ -1,7 +1,7 @@
 import axios from "axios";
 import { create } from "zustand";
 import { unauthorized } from "../utility/utility";
-const Base_Url = "https://news-scraper-news-portal.vercel.app";
+const Base_Url = "https://newsscraper-newsportal.onrender.com";
 
 const NewsStore = create((set) => ({
 

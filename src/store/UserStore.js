@@ -2,7 +2,8 @@ import { create } from "zustand";
 import axios from "axios";
 import { getEmail, setEmail } from "../utility/utility";
 import Cookies from "js-cookie";
-const Base_Url = "https://news-scraper-news-portal.vercel.app";
+
+const Base_Url = "https://newsscraper-newsportal.onrender.com";
 
 
 const UserStore = create((set) => ({
